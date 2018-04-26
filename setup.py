@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='log_cleaner',
-    version='1.0.1',
+    version='1.0.2',
     description='clean outdated log.',
     packages=find_packages(),
     author='lisfe',

@@ -15,6 +15,8 @@ def main():
     setting['dir_paths'] = json.loads(log_dirs_raw)
     delta_day_raw = environ.get('LOG_CLEANER_DELTA_DAYS','7')
     setting['datetime_th'] = datetime.datetime.now() - datetime.timedelta(days=int(delta_day_raw))
+    depth = int(environ.get('LOG_CLEANER_DEPTH', '1'))
+    setting['depth'] = depth
     pprint.pprint(setting)
 
     log_cleaner.delete_outdated(**setting)
