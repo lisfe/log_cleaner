@@ -1,6 +1,6 @@
 import log_cleaner
 
-if __name__ == '__main__':
+def main():
     from os import environ
     import datetime
     import json
@@ -18,3 +18,6 @@ if __name__ == '__main__':
     pprint.pprint(setting)
 
     log_cleaner.delete_outdated(**setting)
+
+if __name__ == '__main__':
+    main()
