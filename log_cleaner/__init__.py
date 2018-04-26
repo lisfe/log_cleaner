@@ -1,5 +1,6 @@
 import os
 import datetime
+from pprint import pprint
 def filter_by_mtime(file_paths, datetime_th):
     timestamp_th = datetime_th.timestamp()
     return [ path for path in file_paths if os.path.getmtime(path) < timestamp_th ]
@@ -51,6 +52,7 @@ def delete_outdated(dir_paths, datetime_th=None, dry=True, depth=1):
         all_paths += list_files(dir_path, depth)
     outdated_paths = filter_by_mtime(all_paths, datetime_th)
     if dry:
-        print(outdated_paths)
+        print('delete {} files:'.format(len(outdated_paths)))
+        pprint(outdated_paths[:50])
     else:
         delete_paths(outdated_paths)

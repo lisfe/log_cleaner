@@ -16,13 +16,18 @@ EX: ["/var/log/apache2","/var/log"]
 define how many days is outdated.
 if it is set 4, the file in LOG_CLEANER_DIRS and its mtime is small than (now - 4d) will be deleted.
 
+#### LOG_CLEANER_DELTA_DEPTH
+default is 1
+expand how many level dir upder the path
+all files in the tree will include and filter by mtime
+
 ## EXAMPLE:
 ```
-LOG_CLEANER_DIRS='["/var/log/apache2"]' LOG_CLEANER_DELTA_DAYS='7' LOG_CLEANER_DRY=FALSE python log_cleaner/main.py
+LOG_CLEANER_DIRS='["/var/log/apache2"]' LOG_CLEANER_DELTA_DAYS='7' LOG_CLEANER_DRY=FALSE LOG_CLEANER_DEPTH=1 log-clean
 ```
 
 ### cron
 
 ```
-3 3 * * * LOG_CLEANER_DIRS='["/var/log/apache2"]' LOG_CLEANER_DELTA_DAYS='7' LOG_CLEANER_DRY=FALSE python /<path>/log_cleaner/main.py
+3 3 * * * LOG_CLEANER_DIRS='["/var/log/apache2"]' LOG_CLEANER_DELTA_DAYS='7' LOG_CLEANER_DRY=FALSE LOG_CLEANER_DEPTH=2 /<path>/log-clean
 ```
